@@ -18,6 +18,11 @@
   <h1>All Flights</h1>
   <ul>
     <% flights.forEach(flight => { %>
+      <li>
+        <form action="/flights/<%= flight._id %>?_method=DELETE" method="POST" class="delete-form">
+        <button type="submit">X</button>
+        </form>
+      </li>
       <li> <%= flight.airline %></li>
       <li> <%= flight.airport %></li>
       <li> <%= flight.flightNo %></li>
