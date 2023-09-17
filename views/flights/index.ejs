@@ -6,15 +6,16 @@
   <title>Flights</title>
 </head>
 <body>
-  <h1>Flights</h1>
+  <h1>All Flights</h1>
   <ul>
     <% flights.forEach(flight => { %>
       <li> <%= flight.airline %></li>
-      <li> <%= flight.aiport %></li>
+      <li> <%= flight.airport %></li>
       <li> <%= flight.flightNo %></li>
       <li> <%= flight.departs %></li>
       <% 
     }) %>
-    </body>
   </ul>
+  <a href="flights/new">Add Flight</a>
+    </body>
 </html>

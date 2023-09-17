@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1> Add New Flight</h1>
+  <form action="/flights" method="POST" autocomplete="off">
+    <label for="airline-input">Airline: </label>
+    <input type="text" name="airline" id="airline-input">
+    <label for="airport-input">Airport: </label>
+    <select name="airport" id="airport-select">
+    <option value="AUS"> AUS</option>
+    <option value="DFW"> DFW</option>
+    <option value="DEN"> DEN</option>
+    <option value="LAX"> LAX</option>
+    <option value="SAN"> SAN</option>
+  </select>
+    <label for="flightNo-input">Flight Number: </label>
+    <input type="number" name="flightNo" id="flightNo-input">
+    <label for="departs-input">Depart Date: </label>
+    <input type="date" name="departs" id="departs-input">
+    <button type="submit"> Add Flight </button>
+
+  </form>
+</body>
+</html>
