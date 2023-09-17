@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="stylesheets/style.css">
+  <title>Document</title>
+</head>
+<body>
+  <nav>
+    <button class="nav-button">
+      <a href="/flights"> ALL FLIGHTS</a>
+    </button>
+    <button class="nav-button">
+      <a href="/flights/new">ADD FLIGHT</a>
+    </button>
+  </nav>
+  <h1> <%= title %></h1>
+  <form action="/flights/<%= flight._id %>?_method=PUT" method="POST" autocomplete="off">
+    <label for="airline-input">Airline: </label>
+    <input type="text" name="airline" value="<%= flight.airline %>" id="airline-input">
+    <label for="airport-input">Airport: </label>
+    <select name="airport" id="airport-select">
+      <option value="<%= flight.airport %>"> Current Flight: <%= flight.airport %></option>
+      <option value="AUS"> AUS</option>
+      <option value="DFW"> DFW</option>
+      <option value="DEN"> DEN</option>
+      <option value="LAX"> LAX</option>
+      <option value="SAN"> SAN</option>
+  </select>
+    <label for="flightNo-input">Flight Number: </label>
+    <input type="number" name="flightNo" value="<%= flight.flightNo%>"id="flightNo-input">
+    <label for="departs-input">Depart Date: </label>
+    <input type="date" name="departs" value="<%= flight.departs %>" id="departs-input">
+    <button type="submit"> Save Flight </button>
+  </form>
+</body>
+</html>
