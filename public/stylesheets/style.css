@@ -1,8 +1,27 @@
 body {
+  display: flexbox;
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
 a {
   color: #00B7FF;
+}
+
+nav {
+  display: flex;
+  justify-content: right;
+  background-color: black;
+  color: white;
+  padding: 5px 8px 5px 8px;
+}
+
+.nav-button {
+  background-color: white;
+  justify-content: space-between;
+  text-align: center;
+  font-size: 18px;
+  margin: 5px;
+  width: 160px;
+  height: 40px;
 }

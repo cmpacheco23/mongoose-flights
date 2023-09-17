@@ -3,9 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="stylesheets/style.css">
   <title>Flights</title>
 </head>
 <body>
+  <nav>
+    <button class="nav-button">
+      <a href="/flights"> ALL FLIGHTS</a>
+    </button>
+    <button class="nav-button">
+      <a href="/flights/new">ADD FLIGHT</a>
+    </button>
+  </nav>
   <h1>All Flights</h1>
   <ul>
     <% flights.forEach(flight => { %>
