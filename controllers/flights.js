@@ -20,8 +20,13 @@ function newFlight(req, res){
 }
 
 function create(req, res){
+  console.log('REQ BODY before:',req.body)
+  if(!req.body.departs){
+    delete req.body.departs
+  }
+  console.log('REQ BODY after:',req.body)
   Flight.create(req.body)
-  .then(flights => {
+  .then(flight => {
     res.redirect('/flights')
   })
   .catch(error => {
