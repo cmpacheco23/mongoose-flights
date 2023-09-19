@@ -1,3 +1,4 @@
+import mongoose from "mongoose"
 import { Flight } from "../models/flight.js"
 
 function index(req, res){
@@ -112,9 +113,11 @@ function createTicket(req, res){
 }
 
 function deleteTicket(req, res){
-  Flight.find({tickets})
-  .then(flights => {
-    
+Flight.tickets.deleteOne()
+  // Flight.tickets.deleteOne()
+  .then(flight => {
+    flight.save()
+    res.redirect('/flights/show')
   })
 }
 export {
