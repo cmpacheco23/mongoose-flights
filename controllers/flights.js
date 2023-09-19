@@ -114,7 +114,7 @@ function createTicket(req, res){
 }
 
 function deleteTicket(req, res){
-Flight.tickets.deleteOne()
+Flight.tickets.deleteOne({})
   // Flight.tickets.deleteOne()
   .then(flight => {
     flight.save()
