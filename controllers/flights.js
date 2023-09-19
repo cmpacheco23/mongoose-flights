@@ -130,6 +130,24 @@ function deleteTicket(req, res){
     })
   })
 }
+
+function addToMeal(req, res){
+  // find the flight by its id
+  Flight.findById(req.params.flightId)
+  // make a promise
+  .then(flight =>{
+    // push the mealId into the flight.meal array
+    flight.meals.push(req.body.mealId)
+    flight.save()
+    //save the flight
+    .then(()=> {
+      // make another promise with a anon function
+        // redirect to the flights/flight id
+      res.redirect(`/flights/${flight._id}`)
+
+    })
+  })
+}
 export {
   index,
   newFlight as new,
@@ -139,5 +157,6 @@ export {
   edit,
   update,
   createTicket,
-  deleteTicket
+  deleteTicket,
+  addToMeal
 }
