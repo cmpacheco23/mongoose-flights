@@ -114,11 +114,13 @@ function createTicket(req, res){
 }
 
 function deleteTicket(req, res){
-Flight.tickets.deleteOne({})
-  // Flight.tickets.deleteOne()
-  .then(flight => {
+  Flight.findById(req.params.flightId)
+  .then(flight =>{
+    flight.tickets.id(req.params.ticketId).deleteOne()
     flight.save()
-    res.redirect('/flights/show')
+    .then(() => {
+      res.redirect(`/flights/${flight._id}`)
+    })
   })
 }
 export {
