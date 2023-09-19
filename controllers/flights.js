@@ -3,7 +3,7 @@ import { Flight } from "../models/flight.js"
 function index(req, res){
   Flight.find({})
   .then(flights => {
-    console.log('FLIGHTS FROM DATABASE:', flights)
+    // console.log('FLIGHTS FROM DATABASE:', flights)
     res.render('flights/index',{
       flights: flights,
       title: 'All Flights'
@@ -20,11 +20,11 @@ function newFlight(req, res){
 }
 
 function create(req, res){
-  console.log('REQ BODY before:',req.body)
+  // console.log('REQ BODY before:',req.body)
   if(!req.body.departs){
     delete req.body.departs
   }
-  console.log('REQ BODY after:',req.body)
+  // console.log('REQ BODY after:',req.body)
   Flight.create(req.body)
   .then(flight => {
     res.redirect('/flights')
@@ -91,6 +91,32 @@ function update(req, res) {
 })
 }
 
+function createTicket(req, res){
+  Flight.findById(req.params.flightId)
+  .then(flight => {
+    flight.tickets.push(req.body)
+    console.log(req.body)
+    flight.save()
+    .then(() => {
+      res.redirect(`/flights/${flight._id}`)
+    })
+    .catch(error => {
+      console.log(error)
+      res.redirect('/')
+  })
+  .catch(error => {
+    console.log(error)
+    res.redirect('/')
+})
+  })
+}
+
+function deleteTicket(req, res){
+  Flight.find({tickets})
+  .then(flights => {
+    
+  })
+}
 export {
   index,
   newFlight as new,
@@ -98,5 +124,7 @@ export {
   deleteFlight as delete,
   show,
   edit,
-  update
+  update,
+  createTicket,
+  deleteTicket
 }
