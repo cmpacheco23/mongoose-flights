@@ -1,13 +1,19 @@
 import { Meal } from "../models/meal.js"
 
 function newMeal(req, res){
-  res.render('meals/new')
+  Meal.find({})
+  .then(meals => {
+    res.render('meals/new', {
+      title: 'View Current Meal Options',
+      meals: meals,
+    })
+  })
 }
 
 function create(req, res){
   Meal.create(req.body)
   .then(meal =>{
-    res.redirect(`/flights/${flight._id}`)
+    res.redirect(`/meals/new`)
   })
 }
 
