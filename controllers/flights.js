@@ -29,7 +29,7 @@ function create(req, res){
   // console.log('REQ BODY after:',req.body)
   Flight.create(req.body)
   .then(flight => {
-    res.redirect('/flights')
+    res.redirect(`/flights/${flight._id}`)
   })
   .catch(error => {
     console.log(error)
@@ -50,10 +50,17 @@ function deleteFlight(req, res){
 
 function show(req, res){
   Flight.findById(req.params.flightId)
+  .populate('meals')
   .then(flight => {
-    res.render('flights/show', {
-      title: 'Flight Details',
-      flight: flight,
+    Meal.find({_id: {$nin: flight.meals}})
+    .then(meals => {
+      res.render('flights/show', {
+        title: 'Flight Details',
+        flight: flight,
+        meals: meals
+    })
+      // find the meals
+      // render the meals
     })
   })
   .catch(error => {
